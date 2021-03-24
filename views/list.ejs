@@ -1,0 +1,26 @@
+<%- include("header"); -%>
+
+    <!-- first div with marker tag -->
+    <div class="box" id="heading" >
+        <!-- EJS marker tag -->
+        <h1> <%= listTitle %> </h1> <!-- listTitle is dynamic and is from the server -->
+    </div>
+    <!-- second div with for loop -->
+    <div class="box">
+        <!-- special tags needed for js code -->  
+        <%  for(var i=0; i<newListItems.length; i++) { %>
+        <!-- inner div for items -->    
+        <div class="item">
+            <input type="checkbox">
+            <p><%= newListItems[i] %></p>
+        </div>      
+        <%  } %>
+        <!-- form with submit button -->
+        <form class="item" action="/" method="post">  <!-- "/" is the root (home) route --> 
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <!-- submit will trigger the form to make a post request -->
+            <button type="submit" name="list" value=<%= listTitle  %>>+</button>
+        </form>    
+    </div>
+
+<%- include("footer"); -%>  
